@@ -1,1 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Spain Travel Guide | Discover Spain</title>
+
+  <meta
+    name="description"
+    content="Discover Spain's best destinations, hotels, experiences, itineraries and travel deals."
+  >
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f6f1;
+      color: #172033;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      color: white;
+      padding: 24px 0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: #e8b35a;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #e8b35a;
+    }
+
+    .nav-button {
+      background: #e8b35a;
+      color: #172033;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 720px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      color: white;
+      background:
+        linear-gradient(rgba(8, 18, 35, 0.38), rgba(8, 18, 35, 0.65)),
+        url("https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=2000&q=85")
+        center/cover;
+    }
+
+    .hero-content {
+      max-width: 760px;
+      padding-top: 70px;
+    }
+
+    .eyebrow {
+      color: #e8b35a;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(48px, 7vw, 88px);
+      line-height: 0.98;
+      margin-bottom: 25px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      font-size: 18px;
+      color: #f3f3f3;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .button-primary {
+      background: #e8b35a;
+      color: #172033;
+    }
+
+    .button-secondary {
+      border: 1px solid rgba(255,255,255,0.7);
+      color: white;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(5px);
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    /* SEARCH */
+
+    .search-box {
+      background: white;
+      padding: 9px;
+      border-radius: 50px;
+      display: flex;
+      max-width: 680px;
+      margin-top: 45px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 15px 22px;
+      font-size: 15px;
+    }
+
+    .search-box button {
+      border: none;
+      background: #172033;
+      color: white;
+      border-radius: 40px;
+      padding: 0 25px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* QUICK LINKS */
+
+    .quick-links {
+      margin-top: -55px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .quick-card {
+      background: white;
+      padding: 28px 22px;
+      border-radius: 18px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .quick-card:hover {
+      transform: translateY(-7px);
+    }
+
+    .quick-card h3 {
+      margin-bottom: 7px;
+    }
+
+    .quick-card p {
+      font-size: 14px;
+      color: #6d7480;
+    }
+
+    /* GENERAL SECTIONS */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 35px;
+      gap: 20px;
+    }
+
+    .section-heading h2 {
+      font-family: Georgia, serif;
+      font-size: 45px;
+      line-height: 1.1;
+    }
+
+    .section-heading p {
+      max-width: 450px;
+      color: #6d7480;
+    }
+
+    /* DESTINATIONS */
+
+    .destination-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .destination {
+      min-height: 320px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: end;
+      transition: 0.4s;
+    }
+
+    .destination:hover {
+      transform: translateY(-6px);
+    }
+
+    .destination::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75));
+    }
+
+    .destination-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      padding: 25px;
+    }
+
+    .destination-content h3 {
+      font-family: Georgia, serif;
+      font-size: 28px;
+    }
+
+    .destination-content p {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .barcelona {
+      background-image: url("https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .madrid {
+      background-image: url("https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .seville {
+      background-image: url("https://images.unsplash.com/photo-1559564484-e48a3e0c3c0f?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .mallorca {
+      background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80");
+    }
+
+    /* ITINERARIES */
+
+    .itinerary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .itinerary-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+    }
+
+    .itinerary-image {
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .itinerary-content {
+      padding: 25px;
+    }
+
+    .itinerary-content h3 {
+      font-family: Georgia, serif;
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .itinerary-content p {
+      color: #6d7480;
+      margin-bottom: 18px;
+    }
+
+    /* CTA */
+
+    .cta {
+      background: #172033;
+      color: white;
+      text-align: center;
+      border-radius: 30px;
+      padding: 80px 30px;
+    }
+
+    .cta h2 {
+      font-family: Georgia, serif;
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      color: #cfd3da;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #101725;
+      color: white;
+      padding: 70px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    footer h3 {
+      margin-bottom: 18px;
+    }
+
+    footer p,
+    footer a {
+      color: #aeb5c1;
+      font-size: 14px;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer li {
+      margin-bottom: 10px;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 50px;
+      padding-top: 25px;
+      color: #818997;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .quick-grid,
+      .destination-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .itinerary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        min-height: 650px;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .search-box {
+        border-radius: 18px;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .search-box button {
+        padding: 14px;
+      }
+
+      .quick-grid,
+      .destination-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-heading h2 {
+        font-size: 36px;
+        margin-bottom: 15px;
+      }
+
+      .cta h2 {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+    <div class="container nav">
+
+      <a href="#" class="logo">
+        Spain<span>Travel</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#destinations">Destinations</a></li>
+        <li><a href="#itineraries">Itineraries</a></li>
+        <li><a href="#experiences">Things to Do</a></li>
+        <li><a href="#deals">Travel Deals</a></li>
+      </ul>
+
+      <a href="#itineraries" class="nav-button">
+        Plan Your Trip
+      </a>
+
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          Your Guide to Spain
+        </div>
+
+        <h1>
+          Discover Spain<br>
+          Your Way
+        </h1>
+
+        <p>
+          Explore beautiful destinations, unforgettable experiences,
+          inspiring itineraries and the best places to stay in Spain.
+        </p>
+
+        <div class="buttons">
+          <a href="#destinations" class="button button-primary">
+            Explore Spain
+          </a>
+
+          <a href="#itineraries" class="button button-secondary">
+            Plan Your Trip
+          </a>
+        </div>
+
+        <div class="search-box">
+          <input
+            type="text"
+            placeholder="Where do you want to go?"
+          >
+
+          <button>
+            Search
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- QUICK NAVIGATION -->
+
+  <div class="quick-links">
+
+    <div class="container">
+
+      <div class="quick-grid">
+
+        <a href="#destinations" class="quick-card">
+          <h3>Destinations</h3>
+          <p>Discover the best places in Spain.</p>
+        </a>
+
+        <a href="#hotels" class="quick-card">
+          <h3>Hotels & Stays</h3>
+          <p>Find hotels, resorts and luxury stays.</p>
+        </a>
+
+        <a href="#experiences" class="quick-card">
+          <h3>Things to Do</h3>
+          <p>Find tours and unforgettable experiences.</p>
+        </a>
+
+        <a href="#deals" class="quick-card">
+          <h3>Travel Deals</h3>
+          <p>Explore travel offers and packages.</p>
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- DESTINATIONS -->
+
+  <section id="destinations">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div>
+          <div class="eyebrow">Explore Spain</div>
+          <h2>Find Your Next Destination</h2>
+        </div>
+
+        <p>
+          From vibrant cities to Mediterranean beaches,
+          discover the places that make Spain unforgettable.
+        </p>
+
+      </div>
+
+
+      <div class="destination-grid">
+
+        <a href="#" class="destination barcelona">
+          <div class="destination-content">
+            <h3>Barcelona</h3>
+            <p>Architecture, beaches & culture</p>
+          </div>
+        </a>
+
+        <a href="#" class="destination madrid">
+          <div class="destination-content">
+            <h3>Madrid</h3>
+            <p>Art, food & nightlife</p>
+          </div>
+        </a>
+
+        <a href="#" class="destination seville">
+          <div class="destination-content">
+            <h3>Seville</h3>
+            <p>Flamenco, history & charm</p>
+          </div>
+        </a>
+
+        <a href="#" class="destination mallorca">
+          <div class="destination-content">
+            <h3>Mallorca</h3>
+            <p>Beaches, nature & luxury</p>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ITINERARIES -->
+
+  <section id="itineraries">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div>
+          <div class="eyebrow">Travel Planning</div>
+          <h2>Plan Your Perfect Trip</h2>
+        </div>
+
+        <p>
+          Ready-made travel ideas to help you experience
+          more of Spain with less planning.
+        </p>
+
+      </div>
+
+
+      <div class="itinerary-grid">
+
+        <article class="itinerary-card">
+
+          <div
+            class="itinerary-image"
+            style="background-image:url('https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1000&q=80')">
+          </div>
+
+          <div class="itinerary-content">
+            <h3>7 Days in Spain</h3>
+
+            <p>
+              A balanced itinerary covering Spain's
+              most unforgettable highlights.
+            </p>
+
+            <a href="#" class="button button-primary">
+              View Itinerary
+            </a>
+          </div>
+
+        </article>
+
+
+        <article class="itinerary-card">
+
+          <div
+            class="itinerary-image"
+            style="background-image:url('https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=1000&q=80')">
+          </div>
+
+          <div class="itinerary-content">
+            <h3>Spain Honeymoon</h3>
+
+            <p>
+              Romantic destinations, luxury hotels
+              and unforgettable experiences.
+            </p>
+
+            <a href="#" class="button button-primary">
+              View Itinerary
+            </a>
+          </div>
+
+        </article>
+
+
+        <article class="itinerary-card">
+
+          <div
+            class="itinerary-image"
+            style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80')">
+          </div>
+
+          <div class="itinerary-content">
+            <h3>Luxury Spain</h3>
+
+            <p>
+              Discover premium hotels, private tours,
+              fine dining and exclusive experiences.
+            </p>
+
+            <a href="#" class="button button-primary">
+              View Itinerary
+            </a>
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXPERIENCES -->
+
+  <section id="experiences">
+
+    <div class="container">
+
+      <div class="cta">
+
+        <div class="eyebrow">
+          Experiences
+        </div>
+
+        <h2>Make Your Spain Trip Unforgettable</h2>
+
+        <p>
+          Discover tours, food experiences, day trips,
+          cultural attractions and luxury experiences.
+        </p>
+
+        <a href="#" class="button button-primary">
+          Explore Experiences
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- DEALS -->
+
+  <section id="deals">
+
+    <div class="container">
+
+      <div class="section-heading">
+
+        <div>
+          <div class="eyebrow">Travel Deals</div>
+          <h2>Make Your Trip Easier</h2>
+        </div>
+
+        <p>
+          Explore hotels, tours, car rentals, airport
+          transfers and travel packages.
+        </p>
+
+      </div>
+
+      <div class="quick-grid">
+
+        <a href="#" class="quick-card">
+          <h3>Hotel Deals</h3>
+          <p>Find your perfect stay.</p>
+        </a>
+
+        <a href="#" class="quick-card">
+          <h3>Tours</h3>
+          <p>Discover unforgettable activities.</p>
+        </a>
+
+        <a href="#" class="quick-card">
+          <h3>Car Rental</h3>
+          <p>Explore Spain at your own pace.</p>
+        </a>
+
+        <a href="#" class="quick-card">
+          <h3>Travel Packages</h3>
+          <p>Build your perfect trip.</p>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+          <h3>Spain Travel Guide</h3>
+
+          <p>
+            Discover Spain. Plan Better. Travel Further.
+          </p>
+        </div>
+
+        <div>
+          <h3>Explore</h3>
+
+          <ul>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#itineraries">Itineraries</a></li>
+            <li><a href="#experiences">Things to Do</a></li>
+            <li><a href="#deals">Travel Deals</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Travel Guides</h3>
+
+          <ul>
+            <li><a href="#">Barcelona</a></li>
+            <li><a href="#">Madrid</a></li>
+            <li><a href="#">Seville</a></li>
+            <li><a href="#">Mallorca</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Information</h3>
+
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Affiliate Disclosure</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        © 2026 Spain Travel Guide. All rights reserved.
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
